@@ -148,6 +148,36 @@ public:
 		// 노드 증가 처리.
 		++count;
 	}
+	//void InsertMiddle(const T& data)
+	//{
+	//	Node<T>* newNode = new Node<T>();
+	//	newNode->data = data;
+
+	//	Node<T>* current = first->next;
+	//	current->next = 
+	//	Node<T>* next = current->next;
+	//	while (current && current != first)
+	//	{	
+	//		if ((data > current->data && data < next->data))
+	//		{
+	//			newNode->previous = current->next->previous;
+	//			current->next = newNode->previous->next;
+	//			newNode->next = next->previous->next;
+	//			next->previous = newNode->next->previous;
+
+	//		}
+	//		// 다음 노드로 이동.
+	//		current = current->next;
+	//		/*current->next->previous = newNode->previous;
+	//		newNode->previous->next = current->next;
+	//		next->previous->next = newNode->next;
+	//		newNode->next->previous = next->previous;*/
+
+
+	//	}
+
+
+	//}
 
 	// 마지막 위치에 항목 추가하는 함수.
 	void InsertLast(const T& data)

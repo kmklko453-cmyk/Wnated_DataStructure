@@ -11,10 +11,11 @@ int main()
 
 	//항목 제거
 	list.Delete(20);
-	list.Delete(50);
-	list.Delete(80);
-
-	std::cout << "리스트 제거후 출력\n";
+	std::cout << "리스트에서 20 제거 후 출력\n";
+	list.Print();
+	
+	list.InsertMiddle(20);
+	std::cout << "리스트 다시 추가후 출력\n";
 	list.Print();
 
 	std::cin.get();
