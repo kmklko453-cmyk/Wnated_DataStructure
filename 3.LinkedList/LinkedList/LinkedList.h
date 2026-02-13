@@ -3,6 +3,7 @@
 #include "Node.h"
 #include <iostream>
 
+// 메모리 레이아웃.
 //class Test
 //{
 //	int value;
@@ -26,7 +27,26 @@ public:
 	
 	~LinkedList()
 	{
-		// Todo: 메모리 정리.
+		// 메모리 정리.
+		NodeType current = head;
+		NodeType next = nullptr;
+
+		// 순회하면서 메모리 해제.
+		while (current)
+		{
+			// 삭제하기 전에 다음 노드 미리 저장.
+			next = current->next;
+
+			// 삭제.
+			delete current;
+
+			// 다음 노드로 이동.
+			current = next;
+		}
+
+		// 정리.
+		head = nullptr;
+		count = 0;
 	}
 
 	// 노드 추가 함수.
@@ -124,8 +144,6 @@ public:
 		// 삭제할 노드가 헤드인 경우.
 		if (head == current)
 		{
-			// Test.
-
 			// 기존 헤드의 다음 노드를 새 헤드로 설정.
 			head = head->next;
 		}
@@ -133,8 +151,6 @@ public:
 		// 헤드가 아닌 경우.
 		else
 		{
-			// Test.
-
 			// 포인터 정리.
 			trail->next = current->next;
 		}

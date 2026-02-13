@@ -1,5 +1,7 @@
 #include "LinkedList/LinkedList.h"
 #include <iostream>
+//#include <list>
+#include <forward_list>
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -9,7 +11,14 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	_CrtSetBreakAlloc(164);
+	//_CrtSetBreakAlloc(164);
+
+	//std::forward_list<int> stlList;
+	//stlList.emplace_after(stlList.begin(), 10);
+	//
+	//for (auto item : stlList)
+	//{
+	//}
 
 	// 연결 리스트 생성.
 	LinkedList<int> list;
@@ -22,8 +31,8 @@ int main()
 	list.Print();
 
 	// 삭제.
-	list.Delete(30);
-	list.Delete(10);
+	//list.Delete(30);
+	//list.Delete(10);
 
 	// 출력.
 	std::cout << "노드 삭제 후 출력\n";
