@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7.Queue", "7.Queue\7.Queue.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "8.QueueMaze", "8.QueueMaze\8.QueueMaze.vcxproj", "{C5239DCC-93BA-45BA-ABDB-A42046CCB79F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "9.HashTable", "9.HashTable\9.HashTable.vcxproj", "{60F7ABC5-D493-4F2B-8810-CE0D646B9E3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -57,6 +59,10 @@ Global
 		{C5239DCC-93BA-45BA-ABDB-A42046CCB79F}.Debug|x64.Build.0 = Debug|x64
 		{C5239DCC-93BA-45BA-ABDB-A42046CCB79F}.Release|x64.ActiveCfg = Release|x64
 		{C5239DCC-93BA-45BA-ABDB-A42046CCB79F}.Release|x64.Build.0 = Release|x64
+		{60F7ABC5-D493-4F2B-8810-CE0D646B9E3A}.Debug|x64.ActiveCfg = Debug|x64
+		{60F7ABC5-D493-4F2B-8810-CE0D646B9E3A}.Debug|x64.Build.0 = Debug|x64
+		{60F7ABC5-D493-4F2B-8810-CE0D646B9E3A}.Release|x64.ActiveCfg = Release|x64
+		{60F7ABC5-D493-4F2B-8810-CE0D646B9E3A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
