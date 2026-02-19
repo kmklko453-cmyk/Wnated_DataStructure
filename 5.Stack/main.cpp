@@ -27,7 +27,7 @@ int main()
 	Stack<float, 100> stack;
 
 	//데이터 추가
-	for (int ix = 0; ix < count; ++ix)
+	for (int ix = 0; ix < count + 1; ++ix)
 	{
 		if (!stack.Push(RandomRange(100.0f, 200.0f)))
 		{

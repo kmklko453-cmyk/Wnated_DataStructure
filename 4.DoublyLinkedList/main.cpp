@@ -14,7 +14,7 @@ int main()
 	std::cout << "리스트에서 20 제거 후 출력\n";
 	list.Print();
 	
-	list.InsertMiddle(20);
+	//list.InsertMiddle(20);
 	std::cout << "리스트 다시 추가후 출력\n";
 	list.Print();
 
