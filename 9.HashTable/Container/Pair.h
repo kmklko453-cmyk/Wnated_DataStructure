@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 //키-값을 쌍으로 저장할 때 사용할 자료형
 template<typename KeyType,typename ValueTpye>
 class Pair
@@ -16,7 +18,7 @@ public:
 	{
 	}
 
-	Pair(KeyType key, ValueTpye value)
+	Pair(const KeyType& key, const ValueTpye& value)
 		:key(key), value(value)
 	{
 	}

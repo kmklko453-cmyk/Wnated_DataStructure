@@ -16,6 +16,20 @@ public:
 	HashTable();
 	~HashTable();
 
+	//키-값 조합으로 저장할 수 있도록
+	bool Add(const std::string& key, const std::string& value);
+	
+	//삭제 - 키를 활용해 K- Value 조합 데이터 삭제
+	bool Delete(const std::string& key);
+
+	//검색 함수
+	bool Find(const std::string& key, Entry& outEntry);
+
+	//출력 함수
+	void Print();
+
+	//Getter
+	bool IsEmpty() const;
 private:
 	// 내부 저장소 크기
 	// 내부 저장소 크기는 소수(1과 자기 자신으로 나누어지는 수) 를 
