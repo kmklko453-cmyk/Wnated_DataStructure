@@ -64,7 +64,7 @@ public:
 	// Getter/Setter.
 	inline T GetData() const { return data; }
 	inline std::vector<Node<T>*>& GetChildren() { return children; }
-	inline Node<T>* GetPrarent() const { return parent; }
+	inline Node<T>* GetParent() const { return parent; }
 	inline void SetParent(Node<T>* newParent) { parent = newParent; }
 
 private:
@@ -90,7 +90,7 @@ private:
 		if (children.size() == 0)
 		{
 			// 부모 노드의 자손 목록 가져오기.
-			auto& parentVector = child->GetPrarent()->GetChildren();
+			auto& parentVector = child->GetParent()->GetChildren();
 
 			// 자손 목록에서 삭제할 노드 검색(반환 타입은 iterator).
 			auto childIt = std::find(
@@ -119,7 +119,7 @@ private:
 
 		// 마무리.
 		// 부모 노드의 자손 목록 가져오기.
-		auto& parentVector = child->GetPrarent()->GetChildren();
+		auto& parentVector = child->GetParent()->GetChildren();
 
 		// 자손 목록에서 삭제할 노드 검색(반환 타입은 iterator).
 		auto childIt = std::find(
