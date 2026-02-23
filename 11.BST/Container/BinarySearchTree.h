@@ -2,6 +2,7 @@
 
 #include "Node.h"
 
+
 //이진 탐색 클래스
 template<typename T>
 class BinarySearchTree
@@ -12,7 +13,8 @@ public:
 	}
 	~BinarySearchTree()
 	{
-		//Todo: 트리 제거 함수 구현 후 호출 
+		//트리 제거 함수 구현 후 호출 
+		//Destroy();
 	}
 
 	//삽입 
@@ -159,7 +161,7 @@ private:
 				//여기에서는 2가지 방법이 가능 
 				//1. 왼쪽 하위 트리에서 가장 큰 값의 노드를 대체
 				//2. 오른쪽 하위 트리에서 가장 작은 값의 노드를 대체
-				//Todo:부분 함수 구현 
+				//부분 함수 구현 
 				//하위 노드에서 최소값 찾는 함수 구현 
 				node->data = SearchMinValue(node->right)->data;
 
@@ -229,6 +231,39 @@ private:
 
 
 	//파괴 함수
+	void Destroy()
+	{
+		//빈 트리(root가 null)인 경우에는 함수종료
+		if (!root)
+		{
+			return;
+		}
+		//루트 노드부토 제거
+		DestroyRecursive(root);
+	}
+	//파괴 재귀 함수
+	void DestroyRecursive(Node<T>* node)
+	{
+		//종료 조건
+		if(!node)
+		{
+			return;
+		}
+
+		//자손이 없는 경우
+		if (!node->left && !node->right)
+		{
+			delete node;
+			return;
+		}
+
+		//왼쪽 하위 트리 삭제
+		DestroyRecursive(node->left);
+
+		//오른쪽 하위 트리 삭제
+		DestroyRecursive(node->right);
+
+	}
 
 private:
 	//루트 노드
