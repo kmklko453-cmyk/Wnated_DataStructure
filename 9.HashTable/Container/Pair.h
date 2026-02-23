@@ -1,16 +1,16 @@
-#pragma once
+ï»¿#pragma once
 
 
 
-//Å°-°ªÀ» ½ÖÀ¸·Î ÀúÀåÇÒ ¶§ »ç¿ëÇÒ ÀÚ·áÇü
+//í‚¤-ê°’ì„ ìŒìœ¼ë¡œ ì €ì¥í•  ë•Œ ì‚¬ìš©í•  ìë£Œí˜•
 template<typename KeyType,typename ValueTpye>
 class Pair
 {
 public:
-	//Å° Å¸ÀÔÀÇ µ¥ÀÌÅÍ ÀúÀå º¯¼ö
+	//í‚¤ íƒ€ì…ì˜ ë°ì´í„° ì €ì¥ ë³€ìˆ˜
 	KeyType key;
 
-	//°ª Å¸ÀÔÀÇ µ¥ÀÌÅÍ ÀúÀå º¯¼ö
+	//ê°’ íƒ€ì…ì˜ ë°ì´í„° ì €ì¥ ë³€ìˆ˜
 	ValueTpye value;
 
 	Pair()
@@ -23,15 +23,15 @@ public:
 	{
 	}
 
-	//¿¬»êÀÚ ¿À¹ö·Îµù
+	//ì—°ì‚°ì ì˜¤ë²„ë¡œë”©
 	bool operator==(const Pair<KeyType, ValueTpye>& other)
 	{
-		//ÀüÁ¦ Á¶°Ç : key¿Í value °¢°¢ ºñ±³°¡ °¡´ÉÇØ¾ßÇÔ
+		//ì „ì œ ì¡°ê±´ : keyì™€ value ê°ê° ë¹„êµê°€ ê°€ëŠ¥í•´ì•¼í•¨
 		return key == other.key && value == other.value;
 	}
 	bool operator!=(const Pair<KeyType, ValueTpye>& other)
 	{
-		//ÀüÁ¦ Á¶°Ç : key¿Í value °¢°¢ ºñ±³°¡ °¡´ÉÇØ¾ßÇÔ
+		//ì „ì œ ì¡°ê±´ : keyì™€ value ê°ê° ë¹„êµê°€ ê°€ëŠ¥í•´ì•¼í•¨
 		return !(*this==other);
 	}
 

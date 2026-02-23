@@ -1,43 +1,43 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Pair.h"
 #include<vector>
 #include<string>
 
 
-//ÇØ½ÃÅ×ÀÌºí Å¬·¡½º
+//í•´ì‹œí…Œì´ë¸” í´ë˜ìŠ¤
 class HashTable
 {
 private:
-	//ÀåÈ²ÇÑ Å¸ÀÔÀ» Entry·Î Ä¡È¯
+	//ì¥í™©í•œ íƒ€ì…ì„ Entryë¡œ ì¹˜í™˜
 	using Entry = Pair<std::string, std::string>;
 
 public:
 	HashTable();
 	~HashTable();
 
-	//Å°-°ª Á¶ÇÕÀ¸·Î ÀúÀåÇÒ ¼ö ÀÖµµ·Ï
+	//í‚¤-ê°’ ì¡°í•©ìœ¼ë¡œ ì €ì¥í•  ìˆ˜ ìˆë„ë¡
 	bool Add(const std::string& key, const std::string& value);
 	
-	//»èÁ¦ - Å°¸¦ È°¿ëÇØ K- Value Á¶ÇÕ µ¥ÀÌÅÍ »èÁ¦
+	//ì‚­ì œ - í‚¤ë¥¼ í™œìš©í•´ K- Value ì¡°í•© ë°ì´í„° ì‚­ì œ
 	bool Delete(const std::string& key);
 
-	//°Ë»ö ÇÔ¼ö
+	//ê²€ìƒ‰ í•¨ìˆ˜
 	bool Find(const std::string& key, Entry& outEntry);
 
-	//Ãâ·Â ÇÔ¼ö
+	//ì¶œë ¥ í•¨ìˆ˜
 	void Print();
 
 	//Getter
 	bool IsEmpty() const;
 private:
-	// ³»ºÎ ÀúÀå¼Ò Å©±â
-	// ³»ºÎ ÀúÀå¼Ò Å©±â´Â ¼Ò¼ö(1°ú ÀÚ±â ÀÚ½ÅÀ¸·Î ³ª´©¾îÁö´Â ¼ö) ¸¦ 
-	// ¼±ÅÃÇÏ´Â °Ô ÇØ½Ã Ãæµ¹ ¹æÁö¿¡ ÁÁÀ½
-	// »ç¿ë °¡´ÉÇÑ ¼Ò¼ö Áß¿¡¼­ Å« ¼ö¸¦ »ç¿ë
+	// ë‚´ë¶€ ì €ì¥ì†Œ í¬ê¸°
+	// ë‚´ë¶€ ì €ì¥ì†Œ í¬ê¸°ëŠ” ì†Œìˆ˜(1ê³¼ ìê¸° ìì‹ ìœ¼ë¡œ ë‚˜ëˆ„ì–´ì§€ëŠ” ìˆ˜) ë¥¼ 
+	// ì„ íƒí•˜ëŠ” ê²Œ í•´ì‹œ ì¶©ëŒ ë°©ì§€ì— ì¢‹ìŒ
+	// ì‚¬ìš© ê°€ëŠ¥í•œ ì†Œìˆ˜ ì¤‘ì—ì„œ í° ìˆ˜ë¥¼ ì‚¬ìš©
 	static const int buketCount = 19;
 
-	//ÀÌÂ÷ ÀúÀå¼Ò(ÇØ½Ã Ãæµ¹ ÇØ°á ¹æ¹ıÀ¸·Î Ã¼ÀÌ´×(Chaining))
+	//ì´ì°¨ ì €ì¥ì†Œ(í•´ì‹œ ì¶©ëŒ í•´ê²° ë°©ë²•ìœ¼ë¡œ ì²´ì´ë‹(Chaining))
 	std::vector<Entry> table[buketCount];
 
 };

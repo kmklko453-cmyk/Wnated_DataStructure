@@ -1,15 +1,15 @@
-#include "Container/stack.h"
+ï»¿#include "Container/stack.h"
 #include <iostream>
 #include <time.h>
 
-// ·£´ı(Á¤¼ö).
+// ëœë¤(ì •ìˆ˜).
 int RandomRange(int min, int max)
 {
 	int diff = (max - min) + 1;
 	return ((diff * rand()) / (RAND_MAX + 1)) + min;
 }
 
-// ·£´ı(ºÎµ¿¼Ò¼ö).
+// ëœë¤(ë¶€ë™ì†Œìˆ˜).
 float RandomRange(float min, float max)
 {
 	float percent = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
@@ -19,24 +19,24 @@ float RandomRange(float min, float max)
 
 int main()
 {
-	//·£´ı ½Ãµå
+	//ëœë¤ ì‹œë“œ
 	srand(time(nullptr));
 
-	//½ºÅÃ »ı¼º
+	//ìŠ¤íƒ ìƒì„±
 	const int count = 10;
 	Stack<float, 100> stack;
 
-	//µ¥ÀÌÅÍ Ãß°¡
+	//ë°ì´í„° ì¶”ê°€
 	for (int ix = 0; ix < count + 1; ++ix)
 	{
 		if (!stack.Push(RandomRange(100.0f, 200.0f)))
 		{
-			// ¿¹¿Ü Ã³¸®
-			std::cout << "½ºÅÃ¿¡ °ª Ãß°¡ ½ÇÆĞ\n";
+			// ì˜ˆì™¸ ì²˜ë¦¬
+			std::cout << "ìŠ¤íƒì— ê°’ ì¶”ê°€ ì‹¤íŒ¨\n";
 		}
 	}
 
-	//½ºÅÃ¿¡¼­ °ªÀ» »©¿À¸é¼­ Ãâ·Â
+	//ìŠ¤íƒì—ì„œ ê°’ì„ ë¹¼ì˜¤ë©´ì„œ ì¶œë ¥
 	const int stackCount = stack.Count();
 	for (int ix = 0; ix < stackCount; ++ix)
 	{

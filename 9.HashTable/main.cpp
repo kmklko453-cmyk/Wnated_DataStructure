@@ -1,12 +1,12 @@
-#include "Container/HashTable.h"
+ï»¿#include "Container/HashTable.h"
 #include <iostream>
 
 int main()
 {
-	// ÇØ½Ã Å×ÀÌºí °´Ã¼ »ı¼º
+	// í•´ì‹œ í…Œì´ë¸” ê°ì²´ ìƒì„±
 	HashTable table;
 
-	//µ¥ÀÌÅÍ Ãß°¡
+	//ë°ì´í„° ì¶”ê°€
 	table.Add("Ronnie", "010-12345678");
 	table.Add("Ronnie", "010-12354165");
 	table.Add("Konnie", "010-67837562");
@@ -14,17 +14,17 @@ int main()
 	table.Add("Bonnie", "010-13467711");
 	table.Add("Connie", "010-12879364");
 
-	//Ãâ·Â
+	//ì¶œë ¥
 	table.Print();
 
-	//°Ë»ö
+	//ê²€ìƒ‰
 	Pair<std::string, std::string> outValue;
 	if (table.Find("Konnie", outValue))
 	{
-		std::cout << "°Ë»ö ¼º°ø. key: " << outValue.key << " | Value: " << outValue.value << "\n";
+		std::cout << "ê²€ìƒ‰ ì„±ê³µ. key: " << outValue.key << " | Value: " << outValue.value << "\n";
 	}
 
-	//»èÁ¦
+	//ì‚­ì œ
 	table.Delete("Ronnie");
 	table.Delete("Konnie");
 

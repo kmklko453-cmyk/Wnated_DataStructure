@@ -1,15 +1,15 @@
-#pragma once
+ï»¿#pragma once
 
-// µ¥ÀÌÅÍ ÇÊµå/¸µÅ© ÇÊµå¸¦ °®´Â ³ëµå Å¬·¡½º.
-// ¿¬°á ¸®½ºÆ®¿¡ ÀúÀåµÇ´Â Ç×¸ñ.
+// ë°ì´í„° í•„ë“œ/ë§í¬ í•„ë“œë¥¼ ê°–ëŠ” ë…¸ë“œ í´ë˜ìŠ¤.
+// ì—°ê²° ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ë˜ëŠ” í•­ëª©.
 template<typename T>
 class Node
 {
-	// ¿¬°á ¸®½ºÆ® friend ÁöÁ¤.
+	// ì—°ê²° ë¦¬ìŠ¤íŠ¸ friend ì§€ì •.
 	template<typename T>
 	friend class LinkedList;
 
-	// ³ëµåÀÇ »ı¼ºÀº LinkedList¿¡¼­¸¸ °¡´ÉÇÏµµ·Ï privateÀ¸·Î ÁöÁ¤.
+	// ë…¸ë“œì˜ ìƒì„±ì€ LinkedListì—ì„œë§Œ ê°€ëŠ¥í•˜ë„ë¡ privateìœ¼ë¡œ ì§€ì •.
 private:
 	Node()
 		: data(), next(nullptr)
@@ -22,10 +22,10 @@ private:
 	}
 
 private:
-	// µ¥ÀÌÅÍ ÇÊµå.
+	// ë°ì´í„° í•„ë“œ.
 	T data;
 
-	// ¸µÅ© ÇÊµå.
+	// ë§í¬ í•„ë“œ.
 	Node* next = nullptr;
 };
 

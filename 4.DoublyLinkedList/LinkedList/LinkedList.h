@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Node.h"
 #include <iostream>
@@ -8,29 +8,29 @@ class LinkedList
 {
 public:
 
-	// »ı¼ºÀÚ.
+	// ìƒì„±ì.
 	LinkedList()
 		: first(new Node<T>()),
 		last(new Node<T>()),
 		count(0)
 	{
-		// Ã³À½°ú ¸¶Áö¸· ³ëµå ¿¬°á.
+		// ì²˜ìŒê³¼ ë§ˆì§€ë§‰ ë…¸ë“œ ì—°ê²°.
 		first->next = last;
 		last->previous = first;
 	}
 
 	~LinkedList()
 	{
-		//// Èü ¸Ş¸ğ¸® ¿À·ù È®ÀÎ ÇÔ¼ö.
+		//// í™ ë©”ëª¨ë¦¬ ì˜¤ë¥˜ í™•ì¸ í•¨ìˆ˜.
 		//if (_heapchk() != _HEAPOK)
 		//{
 		//	__debugbreak();
 		//}
 
-		// ¸Ş¸ğ¸® Á¤¸®.
+		// ë©”ëª¨ë¦¬ ì •ë¦¬.
 		Clear();
 
-		//// Èü ¸Ş¸ğ¸® ¿À·ù È®ÀÎ ÇÔ¼ö.
+		//// í™ ë©”ëª¨ë¦¬ ì˜¤ë¥˜ í™•ì¸ í•¨ìˆ˜.
 		//if (_heapchk() != _HEAPOK)
 		//{
 		//	__debugbreak();
@@ -39,7 +39,7 @@ public:
 		delete first;
 		first = nullptr;
 
-		//// Èü ¸Ş¸ğ¸® ¿À·ù È®ÀÎ ÇÔ¼ö.
+		//// í™ ë©”ëª¨ë¦¬ ì˜¤ë¥˜ í™•ì¸ í•¨ìˆ˜.
 		//if (_heapchk() != _HEAPOK)
 		//{
 		//	__debugbreak();
@@ -48,55 +48,55 @@ public:
 		delete last;
 		last = nullptr;
 
-		//// Èü ¸Ş¸ğ¸® ¿À·ù È®ÀÎ ÇÔ¼ö.
+		//// í™ ë©”ëª¨ë¦¬ ì˜¤ë¥˜ í™•ì¸ í•¨ìˆ˜.
 		//if (_heapchk() != _HEAPOK)
 		//{
 		//	__debugbreak();
 		//}
 	}
 
-	// Á¤¸® ÇÔ¼ö.
+	// ì •ë¦¬ í•¨ìˆ˜.
 	void Clear()
 	{
-		// µ¥ÀÌÅÍ¸¦ °®´Â Ã¹ Ç×¸ñºÎÅÍ »èÁ¦.
+		// ë°ì´í„°ë¥¼ ê°–ëŠ” ì²« í•­ëª©ë¶€í„° ì‚­ì œ.
 		Node<T>* current = first->next;
 
-		// ¸¶Áö¸· ³ëµå µµ´Ş Àü±îÁö ¹İº¹.
+		// ë§ˆì§€ë§‰ ë…¸ë“œ ë„ë‹¬ ì „ê¹Œì§€ ë°˜ë³µ.
 		while (current && current != last)
 		{
-			// ´ÙÀ½ ³ëµå ÀÓ½Ã ÀúÀå.
+			// ë‹¤ìŒ ë…¸ë“œ ì„ì‹œ ì €ì¥.
 			Node<T>* next = current->next;
 
-			// ÇöÀç ³ëµå »èÁ¦.
+			// í˜„ì¬ ë…¸ë“œ ì‚­ì œ.
 			delete current;
 
-			// ´ÙÀ½ ³ëµå·Î ÀÌµ¿.
+			// ë‹¤ìŒ ë…¸ë“œë¡œ ì´ë™.
 			current = next;
 		}
 
-		// °ª Á¤¸®.
+		// ê°’ ì •ë¦¬.
 		count = 0;
 
-		// ÃÊ±â »óÅÂ·Î ¸®¼Â.
+		// ì´ˆê¸° ìƒíƒœë¡œ ë¦¬ì…‹.
 		first->next = last;
 		last->previous = first;
 	}
 
-	// °Ë»ö ÇÔ¼ö.
+	// ê²€ìƒ‰ í•¨ìˆ˜.
 	Node<T>* Find(const T& data)
 	{
-		// Ã¹ ³ëµåºÎÅÍ °Ë»ö ½ÃÀÛ.
+		// ì²« ë…¸ë“œë¶€í„° ê²€ìƒ‰ ì‹œì‘.
 		Node<T>* current = first->next;
 
 		while (current && current != last)
 		{
-			// °ª ºñ±³.
+			// ê°’ ë¹„êµ.
 			if (current->data == data)
 			{
 				return current;
 			}
 
-			// ´ÙÀ½ ³ëµå·Î ÀÌµ¿.
+			// ë‹¤ìŒ ë…¸ë“œë¡œ ì´ë™.
 			current = current->next;
 		}
 
@@ -104,21 +104,21 @@ public:
 		return nullptr;
 	}
 
-	// ¿ª¹æÇâ °Ë»ö ÇÔ¼ö.
+	// ì—­ë°©í–¥ ê²€ìƒ‰ í•¨ìˆ˜.
 	Node<T>* FindReverse(const T& data)
 	{
-		// ¸¶Áö¸· ³ëµåºÎÅÍ °Ë»ö ½ÃÀÛ.
+		// ë§ˆì§€ë§‰ ë…¸ë“œë¶€í„° ê²€ìƒ‰ ì‹œì‘.
 		Node<T>* current = last->previous;
 
 		while (current && current != first)
 		{
-			// °ª ºñ±³.
+			// ê°’ ë¹„êµ.
 			if (current->data == data)
 			{
 				return current;
 			}
 
-			// ÀÌÀü ³ëµå·Î ÀÌµ¿.
+			// ì´ì „ ë…¸ë“œë¡œ ì´ë™.
 			current = current->previous;
 		}
 
@@ -126,26 +126,26 @@ public:
 		return nullptr;
 	}
 
-	// Ã¹ À§Ä¡¿¡ Ãß°¡ÇÏ´Â ÇÔ¼ö.
+	// ì²« ìœ„ì¹˜ì— ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜.
 	void InsertFirst(const T& data)
 	{
-		// »õ ³ëµå »ı¼º.
+		// ìƒˆ ë…¸ë“œ ìƒì„±.
 		Node<T>* newNode = new Node<T>();
 		newNode->data = data;
 
-		// Æ÷ÀÎÅÍ Á¤¸®.
-		// »õ ³ëµåÀÇ ´ÙÀ½ ³ëµå¸¦ first->next(±âÁ¸ÀÇ Ã¹ ³ëµå).
-		// ÀÌÀü first->nextÀÇ ÀÌÀü ³ëµå(previous)¸¦ »õ ³ëµå·Î ¼³Á¤.
+		// í¬ì¸í„° ì •ë¦¬.
+		// ìƒˆ ë…¸ë“œì˜ ë‹¤ìŒ ë…¸ë“œë¥¼ first->next(ê¸°ì¡´ì˜ ì²« ë…¸ë“œ).
+		// ì´ì „ first->nextì˜ ì´ì „ ë…¸ë“œ(previous)ë¥¼ ìƒˆ ë…¸ë“œë¡œ ì„¤ì •.
 		Node<T>* next = first->next;
 		newNode->next = next;
 		next->previous = newNode;
 
-		// first->next ³ëµå¸¦ »õ ³ëµå·Î,
-		// »õ ³ëµåÀÇ ÀÌÀü ³ëµå¸¦ first·Î ¼³Á¤.
+		// first->next ë…¸ë“œë¥¼ ìƒˆ ë…¸ë“œë¡œ,
+		// ìƒˆ ë…¸ë“œì˜ ì´ì „ ë…¸ë“œë¥¼ firstë¡œ ì„¤ì •.
 		first->next = newNode;
 		newNode->previous = first;
 
-		// ³ëµå Áõ°¡ Ã³¸®.
+		// ë…¸ë“œ ì¦ê°€ ì²˜ë¦¬.
 		++count;
 	}
 	//void InsertMiddle(const T& data)
@@ -166,7 +166,7 @@ public:
 	//			next->previous = newNode->next->previous;
 
 	//		}
-	//		// ´ÙÀ½ ³ëµå·Î ÀÌµ¿.
+	//		// ë‹¤ìŒ ë…¸ë“œë¡œ ì´ë™.
 	//		current = current->next;
 	//		/*current->next->previous = newNode->previous;
 	//		newNode->previous->next = current->next;
@@ -179,10 +179,10 @@ public:
 
 	//}
 
-	// ¸¶Áö¸· À§Ä¡¿¡ Ç×¸ñ Ãß°¡ÇÏ´Â ÇÔ¼ö.
+	// ë§ˆì§€ë§‰ ìœ„ì¹˜ì— í•­ëª© ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜.
 	void InsertLast(const T& data)
 	{
-		// »õ ³ëµå »ı¼º.
+		// ìƒˆ ë…¸ë“œ ìƒì„±.
 		Node<T>* newNode = new Node<T>();
 		newNode->data = data;
 
@@ -193,67 +193,67 @@ public:
 		newNode->next = last;
 		last->previous = newNode;
 
-		// Áõ°¡ Ã³¸®.
+		// ì¦ê°€ ì²˜ë¦¬.
 		++count;
 	}
 
-	// »èÁ¦ ÇÔ¼ö.
+	// ì‚­ì œ í•¨ìˆ˜.
 	void Delete(const T& data)
 	{
-		// ¸®½ºÆ®°¡ ºñ¾ú´ÂÁö È®ÀÎ.
+		// ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì—ˆëŠ”ì§€ í™•ì¸.
 		if (count == 0)
 		{
 			std::cout << "List is emtpy.\n";
 			return;
 		}
 
-		// »èÁ¦ÇÒ ³ëµå °Ë»ö (¼ø¹æÇâ °Ë»ö).
+		// ì‚­ì œí•  ë…¸ë“œ ê²€ìƒ‰ (ìˆœë°©í–¥ ê²€ìƒ‰).
 		Node<T>* deleteNode = Find(data);
 
-		// °Ë»ö ½ÇÆĞ È®ÀÎ.
+		// ê²€ìƒ‰ ì‹¤íŒ¨ í™•ì¸.
 		if (!deleteNode)
 		{
 			std::cout << "Failed to find data to delete.\n";
 			return;
 		}
 
-		// Æ÷ÀÎÅÍ Á¤¸®.
+		// í¬ì¸í„° ì •ë¦¬.
 		deleteNode->previous->next = deleteNode->next;
 		deleteNode->next->previous = deleteNode->previous;
 
-		// ³ëµå Á¦°Å.
+		// ë…¸ë“œ ì œê±°.
 		delete deleteNode;
 		deleteNode = nullptr;
 
-		// Ç×¸ñ °¨¼Ò.
+		// í•­ëª© ê°ì†Œ.
 		--count;
 	}
 
-	// Ãâ·Â ÇÔ¼ö.
+	// ì¶œë ¥ í•¨ìˆ˜.
 	void Print()
 	{
-		// Ã¹ Ç×¸ñºÎÅÍ.
+		// ì²« í•­ëª©ë¶€í„°.
 		Node<T>* current = first->next;
 
 		std::cout << "List item count: " << count << "\n";
 
 		while (current != last)
 		{
-			// ³ëµåÀÇ µ¥ÀÌÅÍ Ãâ·Â.
+			// ë…¸ë“œì˜ ë°ì´í„° ì¶œë ¥.
 			std::cout << "Item: " << current->data << "\n";
 
-			// ´ÙÀ½ ³ëµå·Î ÀÌµ¿.
+			// ë‹¤ìŒ ë…¸ë“œë¡œ ì´ë™.
 			current = current->next;
 		}
 	}
 
 private:
-	// Ã¹ ¹øÂ° ³ëµå.
+	// ì²« ë²ˆì§¸ ë…¸ë“œ.
 	Node<T>* first = nullptr;
 
-	// ¸¶Áö¸· ³ëµå.
+	// ë§ˆì§€ë§‰ ë…¸ë“œ.
 	Node<T>* last = nullptr;
 
-	// ÀúÀåµÈ Ç×¸ñ ¼ö.
+	// ì €ì¥ëœ í•­ëª© ìˆ˜.
 	int count = 0;
 };

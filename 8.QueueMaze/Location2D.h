@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 
 class Location2D
 {
 public:
-	//Çà(¼¼·Î)
+	//í–‰(ì„¸ë¡œ)
 	int row = 0;
-	//¿­(°¡·Î)
+	//ì—´(ê°€ë¡œ)
 	int col = 0;
 
 public:

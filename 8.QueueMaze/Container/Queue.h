@@ -1,7 +1,7 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 
-//FIFO ÇüÅÂ·Î µ¿ÀÛÇÏ´Â Å¥ Å¬·¡½º
+//FIFO í˜•íƒœë¡œ ë™ì‘í•˜ëŠ” í í´ë˜ìŠ¤
 template<typename T, int capacity = 10>
 class Queue
 {
@@ -10,24 +10,24 @@ public:
 	{
 	}
 
-	//Ãß°¡ ÇÔ¼ö
+	//ì¶”ê°€ í•¨ìˆ˜
 	bool Enqueue(const T& value)
 	{
-		//Å¥°¡ °¡µæ Â÷ÀÖÀ» ¶§
+		//íê°€ ê°€ë“ ì°¨ìˆì„ ë•Œ
 		if (IsFull())
 		{
 			return false;
 		}
 
-		//Ãß°¡ (ÀÎµ¦½º°¡ ¹è¿­ ¹üÀ§¸¦ ¹ş¾î³ªÁö ¾Êµµ·Ï)
+		//ì¶”ê°€ (ì¸ë±ìŠ¤ê°€ ë°°ì—´ ë²”ìœ„ë¥¼ ë²—ì–´ë‚˜ì§€ ì•Šë„ë¡)
 		rear = (rear + 1) % (capacity + 1);
 		data[rear] = value;
 		return true;
 	}
-	//»èÁ¦ ÇÔ¼ö
+	//ì‚­ì œ í•¨ìˆ˜
 	bool Dequeue(T& outValue)
 	{
-		// Å¥°¡ ºñ¾úÀ¸¸é  ½ÇÆĞ
+		// íê°€ ë¹„ì—ˆìœ¼ë©´  ì‹¤íŒ¨
 		if (IsEmpty())
 		{
 			return false;
@@ -36,13 +36,13 @@ public:
 		front = (front + 1) % (capacity + 1);
 		outValue = data[front];
 		
-		//°ª ºñ¿ì±â(ÃÊ±âÈ­)
+		//ê°’ ë¹„ìš°ê¸°(ì´ˆê¸°í™”)
 		data[front] = T();
 		//memset(&data[front], 0, sizeof(T)); 
 		return true;
 	}
 
-	// »èÁ¦ÇÏÁö ¾Ê°í Á¦ÀÏ ¾ÕÀÇ °ª ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+	// ì‚­ì œí•˜ì§€ ì•Šê³  ì œì¼ ì•ì˜ ê°’ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 	bool Peek(T& outValue)
 	{
 		if (IsEmpty())
@@ -54,18 +54,18 @@ public:
 		return true;
 	}
 
-	//Ãâ·Â ÇÔ¼ö
+	//ì¶œë ¥ í•¨ìˆ˜
 	void Print()
 	{
-		std::cout << "Å¥ ³»¿ë Ãâ·Â: ";
+		std::cout << "í ë‚´ìš© ì¶œë ¥: ";
 
-		//Ãâ·Â
+		//ì¶œë ¥
 		const int max = (front < rear) ? rear : (rear + capacity + 1);
 		for (int ix = front + 1; ix <= max; ix++)
 		{
 			std::cout << " " << data[ix % (capacity +1)];
 		}
-		//¸¶¹«¸®
+		//ë§ˆë¬´ë¦¬
 		std::cout << "\n";
 	}
 
@@ -77,11 +77,11 @@ public:
 
 
 private:
-	//µ¥ÀÌÅÍ »ğÀÔ À§Ä¡ º¯¼ö
+	//ë°ì´í„° ì‚½ì… ìœ„ì¹˜ ë³€ìˆ˜
 	int front = 0;
-	//µ¥ÀÌÅÍ »èÁ¦(ÃßÃâ) À§Ä¡ º¯¼ö
+	//ë°ì´í„° ì‚­ì œ(ì¶”ì¶œ) ìœ„ì¹˜ ë³€ìˆ˜
 	int rear = 0;
 
-	//µ¥ÀÌÅÍ ÀúÀå °ø°£
+	//ë°ì´í„° ì €ì¥ ê³µê°„
 	T data[capacity + 1] = {};
 };

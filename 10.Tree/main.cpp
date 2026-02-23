@@ -1,4 +1,4 @@
-#include "Container/Tree.h"
+ï»¿#include "Container/Tree.h"
 
 int main()
 {
@@ -8,20 +8,20 @@ int main()
 	tree.AddChild(9, 7);
 	tree.AddChild(9, 6);
 
-	//°Ë»ö Å×½ºÆ®
+	//ê²€ìƒ‰ í…ŒìŠ¤íŠ¸
 	Node<int>* outNode = nullptr;
 	if (tree.Find(6, outNode))
 	{
 		int num2 = 30;
 	}
 
-	//»èÁ¦ Å×½ºÆ®
+	//ì‚­ì œ í…ŒìŠ¤íŠ¸
 	if (tree.Remove(9))
 	{
 		int num3 = 30;
 	}
 	
-	//ÀüÀ§ ¼øÈ¸ Å×½ºÆ®
+	//ì „ìœ„ ìˆœíšŒ í…ŒìŠ¤íŠ¸
 	tree.PreorderTraversal();
 
 	int number = 10;

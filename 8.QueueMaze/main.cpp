@@ -1,10 +1,10 @@
-#include "Container/Queue.h"
+ï»¿#include "Container/Queue.h"
 #include "Location2D.h"
 #include <iostream>
 #include <Windows.h>
 
-//¸Ê (¹Ì·Î)
-// ÀÛÀº ¸Ê.
+//ë§µ (ë¯¸ë¡œ)
+// ì‘ì€ ë§µ.
 const int mazeSize = 6;
 char map[mazeSize][mazeSize] =
 {
@@ -16,7 +16,7 @@ char map[mazeSize][mazeSize] =
 	{'1','1','1','1','1','1'}
 };
 
-// Å« ¸Ê.
+// í° ë§µ.
 //const int mazeSize = 20;
 //char map[mazeSize][mazeSize] =
 //{
@@ -39,56 +39,56 @@ char map[mazeSize][mazeSize] =
 //	{'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'}
 //};
 
-// ¹æ¹®ÇÏ·Á´Â À§Ä¡°¡ À¯È¿ÇÑÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+// ë°©ë¬¸í•˜ë ¤ëŠ” ìœ„ì¹˜ê°€ ìœ íš¨í•œì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
 bool IsValidLocation(const Location2D& loacation)
 {
-	//ÆíÀÇ ¸ñÀû 
+	//í¸ì˜ ëª©ì  
 	const int row = loacation.row;
 	const int col = loacation.col;
 
-	//ÀÎµ¦½º ¹üÀ§ È®ÀÎ
+	//ì¸ë±ìŠ¤ ë²”ìœ„ í™•ì¸
 	if (row < 0 || row >= mazeSize || col < 0 || col >= mazeSize)
 	{
 		return false;
 	}
-	//ÀÌµ¿ÇÏ·Á´Â °÷ÀÌ ÀÌµ¿ °¡´ÉÇÑÁö È®ÀÎ
+	//ì´ë™í•˜ë ¤ëŠ” ê³³ì´ ì´ë™ ê°€ëŠ¥í•œì§€ í™•ì¸
 
 	return map[row][col] == '0' || map[row][col] == 'x';
 
 }
 
-//ÄÜ¼Ö È­¸é Áö¿ì´Â ÇÔ¼ö
+//ì½˜ì†” í™”ë©´ ì§€ìš°ëŠ” í•¨ìˆ˜
 void ClearScreen()
 {
-	//ÄÜ¼Ö ¸í·É¾î cls ½ÇÇà
+	//ì½˜ì†” ëª…ë ¹ì–´ cls ì‹¤í–‰
 	system("cls");
 }
 
-//ÅØ½ºÆ® »ö»ó ÁöÁ¤ ÇÔ¼ö
+//í…ìŠ¤íŠ¸ ìƒ‰ìƒ ì§€ì • í•¨ìˆ˜
 void SetConsoleColor(WORD color)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-//¸Ê ±×¸®´Â ÇÔ¼ö
+//ë§µ ê·¸ë¦¬ëŠ” í•¨ìˆ˜
 void PrintMap(const Location2D& playerPosition, DWORD delay)
 {
-	//¾²·¹µå¸¦ Àç¿ì´Â ÇÔ¼ö(´ÜÀ§: ¹Ğ¸®ÃÊ-1/1000ÃÊ)
+	//ì“°ë ˆë“œë¥¼ ì¬ìš°ëŠ” í•¨ìˆ˜(ë‹¨ìœ„: ë°€ë¦¬ì´ˆ-1/1000ì´ˆ)
 	Sleep(delay);
 
-	//ÄÜ¼Ö È­¸é Áö¿ì±â
+	//ì½˜ì†” í™”ë©´ ì§€ìš°ê¸°
 	//ClearScreen();
 	COORD coord;
 	coord.X = 0;
 	coord.Y = 0;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 
-	//¸Ê ¼øÈ¸ ÇÏ¸é¼­ Áö¿ì±â
-	for (int row = 0; row < mazeSize; ++row) // Çà(¼¼·Î) ¼øÈ¸
+	//ë§µ ìˆœíšŒ í•˜ë©´ì„œ ì§€ìš°ê¸°
+	for (int row = 0; row < mazeSize; ++row) // í–‰(ì„¸ë¡œ) ìˆœíšŒ
 	{
-		for (int col = 0; col < mazeSize; ++col) // ¿­ (°¡·Î) ¼øÈ¸
+		for (int col = 0; col < mazeSize; ++col) // ì—´ (ê°€ë¡œ) ìˆœíšŒ
 		{
-			//ÇÃ·¹ÀÌ¾î Ãâ·Â
+			//í”Œë ˆì´ì–´ ì¶œë ¥
 			if (row == playerPosition.row && col == playerPosition.col)
 			{
 				SetConsoleColor(FOREGROUND_GREEN);
@@ -97,7 +97,7 @@ void PrintMap(const Location2D& playerPosition, DWORD delay)
 				continue;
 			}
 
-			// ¸ñÇ¥ À§Ä¡ Ãâ·Â
+			// ëª©í‘œ ìœ„ì¹˜ ì¶œë ¥
 			if (map[row][col] == 'x')
 			{
 				SetConsoleColor(FOREGROUND_RED);
@@ -106,7 +106,7 @@ void PrintMap(const Location2D& playerPosition, DWORD delay)
 				continue;
 			}
 
-			//¸Ê Ãâ·Â
+			//ë§µ ì¶œë ¥
 			std::cout << map[row][col] << " ";
 
 		}
@@ -116,13 +116,13 @@ void PrintMap(const Location2D& playerPosition, DWORD delay)
 
 int main()
 {
-	//Ä¿¼­ ²ô±â
+	//ì»¤ì„œ ë„ê¸°
 	CONSOLE_CURSOR_INFO info;
 	info.dwSize = 1;
 	info.bVisible = FALSE;
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
 
-	//½ÃÀÛ À§Ä¡ °Ë»ö
+	//ì‹œì‘ ìœ„ì¹˜ ê²€ìƒ‰
 	Location2D start;
 
 	bool found = false;
@@ -130,7 +130,7 @@ int main()
 	{
 		for (int col = 0; col < mazeSize; ++col)
 		{
-			//½ÃÀÛÁöÁ¡ ¹®ÀÚ Ã£±â
+			//ì‹œì‘ì§€ì  ë¬¸ì ì°¾ê¸°
 			if (map[row][col] == 'e')
 			{
 				start.row = row;
@@ -142,73 +142,73 @@ int main()
 			
 		}
 
-		// Ã£¾ÒÀ¸¸é Á¾·á
+		// ì°¾ì•˜ìœ¼ë©´ ì¢…ë£Œ
 		if (found)
 		{
 			break;
 		}
 	}
 
-	//ÃÊ±â ¸Ê Ãâ·Â
+	//ì´ˆê¸° ë§µ ì¶œë ¥
 	PrintMap(start, 0);
 
-	//Å¥ »ı¼º
+	//í ìƒì„±
 	Queue<Location2D, mazeSize> queue;
 
-	//½ÃÀÛ À§Ä¡ Å¥¿¡ Ãß°¡
+	//ì‹œì‘ ìœ„ì¹˜ íì— ì¶”ê°€
 	queue.Enqueue(start);
 
-	//±æÃ£±â(DFS)
-	//Å¥ÀÌ ºñ¾î ÀÖÁö¾ÊÀ¸¸é = ¹æ¹®ÇÒ À§Ä¡°¡ ³²¾Æ ÀÖÀ¸¸é
-	//¹æ¹® ¹× ±æÃ£±â ÁøÇà
+	//ê¸¸ì°¾ê¸°(DFS)
+	//íì´ ë¹„ì–´ ìˆì§€ì•Šìœ¼ë©´ = ë°©ë¬¸í•  ìœ„ì¹˜ê°€ ë‚¨ì•„ ìˆìœ¼ë©´
+	//ë°©ë¬¸ ë° ê¸¸ì°¾ê¸° ì§„í–‰
 	while (!queue.IsEmpty())
 	{
-		//¹æ¹®ÇÒ À§Ä¡ ²¨³»±â
+		//ë°©ë¬¸í•  ìœ„ì¹˜ êº¼ë‚´ê¸°
 		Location2D current;
 		if (!queue.Dequeue(current))
 		{
 			break;
 		}
 
-		//À§Ä¡ Ãâ·Â
+		//ìœ„ì¹˜ ì¶œë ¥
 		PrintMap(current, 500);
 
-		//Ãâ±¸¿¡ µµÂøÇß´ÂÁö È®ÀÎ
+		//ì¶œêµ¬ì— ë„ì°©í–ˆëŠ”ì§€ í™•ì¸
 		if (map[current.row][current.col] == 'x')
 		{
-			std::cout << "\n¹Ì·Î Å½»ö ¼º°ø\n";
+			std::cout << "\në¯¸ë¡œ íƒìƒ‰ ì„±ê³µ\n";
 			return 0;
 		}
 
-		//¹æ¹® ¹× ¹æ¹®ÇÑ À§Ä¡ Ç¥½Ã
+		//ë°©ë¬¸ ë° ë°©ë¬¸í•œ ìœ„ì¹˜ í‘œì‹œ
 		map[current.row][current.col] = '.';
 
-		//¹æ¹®ÇÒ ÁöÁ¡ Å¥¿¡ Ãß°¡
-		//Å¥¿¡ ³ÖÀ» ¼ø¼­´Â Á¤ÇÒ ¼ö ÀÖÀ½
-		//»ó/ÇÏ/ÁÂ/¿ì ¼ø¼­·Î Å¥¿¡ »ğÀÔ
+		//ë°©ë¬¸í•  ì§€ì  íì— ì¶”ê°€
+		//íì— ë„£ì„ ìˆœì„œëŠ” ì •í•  ìˆ˜ ìˆìŒ
+		//ìƒ/í•˜/ì¢Œ/ìš° ìˆœì„œë¡œ íì— ì‚½ì…
 
-		//»ó
+		//ìƒ
 		if (IsValidLocation(Location2D(current.row - 1 , current.col)))
 		{
 			queue.Enqueue(Location2D(current.row - 1, current.col));
 		}
-		//ÇÏ
+		//í•˜
 		if (IsValidLocation(Location2D(current.row + 1, current.col)))
 		{
 			queue.Enqueue(Location2D(current.row +1, current.col));
 		}
-		//ÁÂ
+		//ì¢Œ
 		if (IsValidLocation(Location2D(current.row , current.col - 1)))
 		{
 			queue.Enqueue(Location2D(current.row , current.col - 1));
 		}
-		//¿ì
+		//ìš°
 		if (IsValidLocation(Location2D(current.row, current.col + 1)))
 		{
 			queue.Enqueue(Location2D(current.row, current.col + 1));
 		}
 	}
 
-	//±æÃ£±â ½ÇÆĞ
-	std::cout << "¹Ì·Î Å½»ö ½ÇÆĞ\n";
+	//ê¸¸ì°¾ê¸° ì‹¤íŒ¨
+	std::cout << "ë¯¸ë¡œ íƒìƒ‰ ì‹¤íŒ¨\n";
 }

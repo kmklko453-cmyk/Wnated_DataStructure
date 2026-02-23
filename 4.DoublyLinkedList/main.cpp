@@ -1,21 +1,28 @@
-#include "LinkedList/LinkedList.h"
+ï»¿#include "LinkedList/LinkedList.h"
+
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	LinkedList<int> list;
 	for (int ix = 0; ix < 10; ++ix)
 	{
 		list.InsertLast((ix + 1) * 10);
 	}
-	std::cout << "¸®½ºÆ® Ãß°¡ÈÄ Ãâ·Â\n";
 
-	//Ç×¸ñ Á¦°Å
-	list.Delete(20);
-	std::cout << "¸®½ºÆ®¿¡¼­ 20 Á¦°Å ÈÄ Ãâ·Â\n";
+	std::cout << "ë¦¬ìŠ¤íŠ¸ ì¶”ê°€ í›„ ì¶œë ¥\n";
 	list.Print();
-	
-	//list.InsertMiddle(20);
-	std::cout << "¸®½ºÆ® ´Ù½Ã Ãß°¡ÈÄ Ãâ·Â\n";
+
+	// í•­ëª© ì œê±°.
+	list.Delete(20);
+	list.Delete(50);
+	list.Delete(80);
+
+	std::cout << "ë¦¬ìŠ¤íŠ¸ ì œê±° í›„ ì¶œë ¥\n";
 	list.Print();
 
 	std::cin.get();

@@ -1,100 +1,100 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Node.h"
 #include <vector>
 #include <iostream>
 
-// Æ®¸® Å¬·¡½º.
+// íŠ¸ë¦¬ í´ë˜ìŠ¤.
 template<typename T>
 class Tree
 {
 public:
 	Tree(const T& data)
 	{
-		// ·çÆ® ³ëµå »ı¼º.
+		// ë£¨íŠ¸ ë…¸ë“œ ìƒì„±.
 		root = new Node<T>(data);
 	}
 
 	~Tree()
 	{
-		// ÀÚ¼Õ ³ëµå ¸ğµÎ Á¦°ÅÇÏ´Â ÇÔ¼ö ±¸Çö ÈÄ È£Ãâ.
+		// ìì† ë…¸ë“œ ëª¨ë‘ ì œê±°í•˜ëŠ” í•¨ìˆ˜ êµ¬í˜„ í›„ í˜¸ì¶œ.
 		DestroyRecursive(root);
 	}
 
 public:
-	// ¿©±â¿¡ ÀÛ¼ºµÇ´Â ÇÔ¼ö¸¦ °´Ã¼ÁöÇâ ÀÌ·Ğ¿¡¼­ "¸Ş½ÃÁö"¶ó°í ÁöÄª.
-	// ¸Ş½ÃÁö = °ø°³(public) ¸Ş¼Òµå - ÀÎÅÍÆäÀÌ½º.
-	// °´Ã¼ ÁöÇâ -> °´Ã¼µéÀÌ ¸Ş½ÃÁö¸¦ ÅëÇØ ¼ÒÅëÇÏ´Â ±¸Á¶.
+	// ì—¬ê¸°ì— ì‘ì„±ë˜ëŠ” í•¨ìˆ˜ë¥¼ ê°ì²´ì§€í–¥ ì´ë¡ ì—ì„œ "ë©”ì‹œì§€"ë¼ê³  ì§€ì¹­.
+	// ë©”ì‹œì§€ = ê³µê°œ(public) ë©”ì†Œë“œ - ì¸í„°í˜ì´ìŠ¤.
+	// ê°ì²´ ì§€í–¥ -> ê°ì²´ë“¤ì´ ë©”ì‹œì§€ë¥¼ í†µí•´ ì†Œí†µí•˜ëŠ” êµ¬ì¡°.
 	// 
-	// ºÎ¸ğ ³ëµåÀÇ °ªÀ» »ç¿ëÇØ ÇØ´ç ºÎ¸ğ¿¡ ÀÚ¼ÕÀ» Ãß°¡.
+	// ë¶€ëª¨ ë…¸ë“œì˜ ê°’ì„ ì‚¬ìš©í•´ í•´ë‹¹ ë¶€ëª¨ì— ìì†ì„ ì¶”ê°€.
 	bool AddChild(const T& parentData, const T& childData)
 	{
-		// ºÎ¸ğ ³ëµå °Ë»ö.
-		// °Ë»ö ÇÔ¼ö ±¸Çö ÈÄ È£Ãâ.
+		// ë¶€ëª¨ ë…¸ë“œ ê²€ìƒ‰.
+		// ê²€ìƒ‰ í•¨ìˆ˜ êµ¬í˜„ í›„ í˜¸ì¶œ.
 		Node<T>* outParent = nullptr;
 		bool result = FindRecursive(parentData, root, outParent);
 
-		// ºÎ¸ğ °Ë»ö¿¡ ¼º°øÇßÀ¸¸é ÀÚ¼Õ ³ëµå Ãß°¡.
+		// ë¶€ëª¨ ê²€ìƒ‰ì— ì„±ê³µí–ˆìœ¼ë©´ ìì† ë…¸ë“œ ì¶”ê°€.
 		if (result)
 		{
 			outParent->AddChild(childData);
 			return true;
 		}
 
-		// ºÎ¸ğ °Ë»ö¿¡ ½ÇÆĞÇÏ¸é ÀÚ¼Õ Ãß°¡ ½ÇÆĞ.
+		// ë¶€ëª¨ ê²€ìƒ‰ì— ì‹¤íŒ¨í•˜ë©´ ìì† ì¶”ê°€ ì‹¤íŒ¨.
 		return false;
 	}
 
-	// °Ë»ö ÇÔ¼ö.
+	// ê²€ìƒ‰ í•¨ìˆ˜.
 	bool Find(const T& data, Node<T>*& outNode)
 	{
 		return FindRecursive(data, root, outNode);
 	}
 
-	// »èÁ¦ ÇÔ¼ö.
+	// ì‚­ì œ í•¨ìˆ˜.
 	bool Remove(const T& data)
 	{
-		// Àç±Í ÇÔ¼ö ±¸Çö ÈÄ È£Ãâ.
+		// ì¬ê·€ í•¨ìˆ˜ êµ¬í˜„ í›„ í˜¸ì¶œ.
 		return RemoveRecursive(data, root);
 	}
 
-	// ÀüÀ§ ¼øÈ¸(Preorder - Traversal).
-	// depth: °èÃşÀ» ½Ã°¢ÀûÀ¸·Î ±¸ºĞÇÏ±â À§ÇØ »ç¿ë.
+	// ì „ìœ„ ìˆœíšŒ(Preorder - Traversal).
+	// depth: ê³„ì¸µì„ ì‹œê°ì ìœ¼ë¡œ êµ¬ë¶„í•˜ê¸° ìœ„í•´ ì‚¬ìš©.
 	void PreorderTraversal(int depth = 0)
 	{
-		// ¼øÈ¸ Àç±Í ÇÔ¼ö ±¸Çö ÈÄ È£Ãâ.
+		// ìˆœíšŒ ì¬ê·€ í•¨ìˆ˜ êµ¬í˜„ í›„ í˜¸ì¶œ.
 		PreorderTraversalRecursive(root, depth);
 	}
 
 private:
-	// data: °Ë»öÇÏ·Á´Â °ª.
-	// node: ÇöÀç °Ë»öÇÏ´Â ³ëµå.
-	// outNode: °Ë»ö¿¡ ¼º°øÇßÀ» ¶§ ¹İÈ¯ÇÒ ³ëµå.
-	// ÇÔ¼öÀÇ ¹İÈ¯ °ª: °Ë»ö ¼º°ø ½ÇÆĞ ¿©ºÎ.
+	// data: ê²€ìƒ‰í•˜ë ¤ëŠ” ê°’.
+	// node: í˜„ì¬ ê²€ìƒ‰í•˜ëŠ” ë…¸ë“œ.
+	// outNode: ê²€ìƒ‰ì— ì„±ê³µí–ˆì„ ë•Œ ë°˜í™˜í•  ë…¸ë“œ.
+	// í•¨ìˆ˜ì˜ ë°˜í™˜ ê°’: ê²€ìƒ‰ ì„±ê³µ ì‹¤íŒ¨ ì—¬ë¶€.
 	bool FindRecursive(const T& data, Node<T>* node, Node<T>*& outNode)
 	{
-		// °Ë»ö ½ÇÆĞ(Å»Ãâ Á¶°Ç).
+		// ê²€ìƒ‰ ì‹¤íŒ¨(íƒˆì¶œ ì¡°ê±´).
 		if (!node)
 		{
-			// null °ª ¼³Á¤ ¹× ÇÔ¼ö Á¾·á (°Ë»ö ½ÇÆĞ).
+			// null ê°’ ì„¤ì • ë° í•¨ìˆ˜ ì¢…ë£Œ (ê²€ìƒ‰ ì‹¤íŒ¨).
 			outNode = nullptr;
 			return false;
 		}
 
-		// ³ëµå°¡ °¡Áø °ªÀÌ °Ë»öÇÏ´Â °ªÀÎÁö ºñ±³.
-		// °Ë»ö ¼º°ø.
+		// ë…¸ë“œê°€ ê°€ì§„ ê°’ì´ ê²€ìƒ‰í•˜ëŠ” ê°’ì¸ì§€ ë¹„êµ.
+		// ê²€ìƒ‰ ì„±ê³µ.
 		if (node->GetData() == data)
 		{
 			outNode = node;
 			return true;
 		}
 
-		// ÀÚ¼Õ ³ëµå·Î ³»·Á°¡¸é¼­ Àç±ÍÀûÀ¸·Î Ãß°¡ °Ë»ö ÁøÇà.
+		// ìì† ë…¸ë“œë¡œ ë‚´ë ¤ê°€ë©´ì„œ ì¬ê·€ì ìœ¼ë¡œ ì¶”ê°€ ê²€ìƒ‰ ì§„í–‰.
 		std::vector<Node<T>*>& children = node->GetChildren();
 		const int length = static_cast<int>(children.size());
 		for (int ix = 0; ix < length; ++ix)
 		{
-			// ÀÚ¼Õ ³ëµå °Ë»ö ÁøÇà.
+			// ìì† ë…¸ë“œ ê²€ìƒ‰ ì§„í–‰.
 			bool result = FindRecursive(data, children[ix], outNode);
 			if (result)
 			{
@@ -102,76 +102,76 @@ private:
 			}
 		}
 
-		// °Ë»ö ½ÇÆĞ.
+		// ê²€ìƒ‰ ì‹¤íŒ¨.
 		outNode = nullptr;
 		return false;
 	}
 
 
-	// »èÁ¦ Àç±Í ÇÔ¼ö.
-	// data: »èÁ¦ÇÒ ³ëµåÀÇ °ª.
-	// node: ÇöÀç °Ë»öÇÒ ³ëµå. RemoveImpl.
+	// ì‚­ì œ ì¬ê·€ í•¨ìˆ˜.
+	// data: ì‚­ì œí•  ë…¸ë“œì˜ ê°’.
+	// node: í˜„ì¬ ê²€ìƒ‰í•  ë…¸ë“œ. RemoveImpl.
 	bool RemoveRecursive(const T& data, Node<T>* node)
 	{
-		// »èÁ¦ÇÒ ³ëµå °Ë»ö.
+		// ì‚­ì œí•  ë…¸ë“œ ê²€ìƒ‰.
 		Node<T>* outNode = nullptr;
 		bool result = FindRecursive(data, node, outNode);
 
-		// °Ë»ö¿¡ ¼º°øÇßÀ¸¸é »èÁ¦ ÁøÇà.
+		// ê²€ìƒ‰ì— ì„±ê³µí–ˆìœ¼ë©´ ì‚­ì œ ì§„í–‰.
 		if (result)
 		{
-			// ºÎ¸ğ ³ëµåÀÇ ÀÚ¼Õ ¸ñ·Ï¿¡¼­ ÇöÀç ³ëµå Á¦°Å.
+			// ë¶€ëª¨ ë…¸ë“œì˜ ìì† ëª©ë¡ì—ì„œ í˜„ì¬ ë…¸ë“œ ì œê±°.
 			Node<T>* parent = outNode->GetParent();
 			if (parent)
 			{
-				// »èÁ¦ÇÒ ³ëµå¸¦ ºÎ¸ğ ³ëµå ¸ñ·Ï¿¡¼­ °Ë»ö.
+				// ì‚­ì œí•  ë…¸ë“œë¥¼ ë¶€ëª¨ ë…¸ë“œ ëª©ë¡ì—ì„œ ê²€ìƒ‰.
 				auto it = std::find(
 					parent->GetChildren().begin(),
 					parent->GetChildren().end(),
 					outNode
 				);
 
-				// ¸ñ·Ï¿¡¼­ ³ëµå Á¦°Å.
+				// ëª©ë¡ì—ì„œ ë…¸ë“œ ì œê±°.
 				parent->GetChildren().erase(it);
 			}
 
-			// ³ëµå°¡ ÀÚ¼ÕÀÌ ÀÖ´Ù¸é ÀÚ¼Õ ³ëµå Á¦°Å.
+			// ë…¸ë“œê°€ ìì†ì´ ìˆë‹¤ë©´ ìì† ë…¸ë“œ ì œê±°.
 			std::vector<Node<T>*>& children = outNode->GetChildren();
 			while (children.size() > 0)
 			{
 				outNode->RemoveChild(children[0]);
 			}
 
-			// ³ëµå Á¦°Å ¹× Á¤¸®.
+			// ë…¸ë“œ ì œê±° ë° ì •ë¦¬.
 			SafeDelete(outNode);
 			//outNode = nullptr;
 
 			return true;
 		}
 
-		// °Ë»ö ¸øÇßÀ¸¸é »èÁ¦ ½ÇÆĞ.
+		// ê²€ìƒ‰ ëª»í–ˆìœ¼ë©´ ì‚­ì œ ì‹¤íŒ¨.
 		return false;
 	}
 
-	// ÀüÀ§¼øÈ¸ Àç±Í ÇÔ¼ö.
+	// ì „ìœ„ìˆœíšŒ ì¬ê·€ í•¨ìˆ˜.
 	void PreorderTraversalRecursive(Node<T>* node, int depth = 0)
 	{
-		// Å»Ãâ Á¶°Ç.
+		// íƒˆì¶œ ì¡°ê±´.
 		if (!node)
 		{
 			return;
 		}
 
-		// °èÃşÀ» º¸¿©ÁÖ±â À§ÇÑ ±íÀÌ Ãâ·Â.
+		// ê³„ì¸µì„ ë³´ì—¬ì£¼ê¸° ìœ„í•œ ê¹Šì´ ì¶œë ¥.
 		for (int ix = 0; ix < depth; ++ix)
 		{
 			std::cout << "  ";
 		}
 
-		// ÀüÀ§ ¼øÈ¸´Â ºÎ¸ğ ³ëµå¸¦ ¸ÕÀú Ã³¸®(¹æ¹®).
+		// ì „ìœ„ ìˆœíšŒëŠ” ë¶€ëª¨ ë…¸ë“œë¥¼ ë¨¼ì € ì²˜ë¦¬(ë°©ë¬¸).
 		std::cout << node->GetData() << "\n";
 
-		// ÀÚ¼Õ ³ëµå Ã³¸®(¹æ¹®).
+		// ìì† ë…¸ë“œ ì²˜ë¦¬(ë°©ë¬¸).
 		std::vector<Node<T>*>& children = node->GetChildren();
 		const int length = static_cast<int>(children.size());
 		if (length == 0)
@@ -186,17 +186,17 @@ private:
 		}
 	}
 
-	// ¸ğµç ³ëµå¸¦ Á¦°ÅÇÏ´Â ÇÔ¼ö (Æ®¸® ÆÄ±«).
+	// ëª¨ë“  ë…¸ë“œë¥¼ ì œê±°í•˜ëŠ” í•¨ìˆ˜ (íŠ¸ë¦¬ íŒŒê´´).
 	void DestroyRecursive(Node<T>*& node)
 	{
-		// ÀÚ¼Õ ¸ñ·Ï ¸ÕÀú Á¦°Å.
+		// ìì† ëª©ë¡ ë¨¼ì € ì œê±°.
 		std::vector<Node<T>*>& children = node->GetChildren();
 		while (children.size() > 0)
 		{
 			DestroyRecursive(children[0]);
 		}
 
-		// ºÎ¸ğ ¸ñ·Ï Á¤¸®.
+		// ë¶€ëª¨ ëª©ë¡ ì •ë¦¬.
 		Node<T>* parent = node->GetParent();
 		if (parent)
 		{
@@ -212,11 +212,11 @@ private:
 			}
 		}
 
-		// ³ëµå Á¦°Å.
+		// ë…¸ë“œ ì œê±°.
 		SafeDelete(node);
 	}
 
 private:
-	// ·çÆ® ³ëµå.
+	// ë£¨íŠ¸ ë…¸ë“œ.
 	Node<T>* root = nullptr;
 };

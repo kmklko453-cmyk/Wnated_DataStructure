@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
+    <file url="file://$PROJECT_DIR$/1.Array/Main.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/2.List/List.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/4.DoublyLinkedList/main.cpp" charset="UTF-16" />
+  </component>
+</project>

@@ -1,8 +1,8 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <cassert>
 #include <array>
 
-// ÅÛÇÃ¸´À¸·Î ¹è¿­ ¸¸µé±â.
+// í…œí”Œë¦¿ìœ¼ë¡œ ë°°ì—´ ë§Œë“¤ê¸°.
 template<typename T, size_t size = 5>
 class Array
 {
@@ -12,14 +12,14 @@ public:
 		return size;
 	}
 
-	// ¹è¿­ ¿¬»êÀÚ ¿À¹ö·Îµù.
+	// ë°°ì—´ ì—°ì‚°ì ì˜¤ë²„ë¡œë”©.
 	T& operator[](size_t index)
 	{
-		// ¾î½áÆ®(²À °ËÁõÀÌ ÇÊ¿äÇÑ ±¸¹®¿¡ È°¿ë).
-		// µğ¹ö±× ¸ğµå¿¡¼­¸¸ µ¿ÀÛ.
+		// ì–´ì¨íŠ¸(ê¼­ ê²€ì¦ì´ í•„ìš”í•œ êµ¬ë¬¸ì— í™œìš©).
+		// ë””ë²„ê·¸ ëª¨ë“œì—ì„œë§Œ ë™ì‘.
 		assert(index < 0 || index >= size);
 
-		// ÀÎµ¦½º ¹üÀ§ È®ÀÎ.
+		// ì¸ë±ìŠ¤ ë²”ìœ„ í™•ì¸.
 		//if (index < 0 || index >= size)
 		//{
 		//	__debugbreak();
@@ -34,17 +34,17 @@ public:
 	}
 
 private:
-	// ¹è¿­ º¯¼ö.
+	// ë°°ì—´ ë³€ìˆ˜.
 	T data[size] = {};
 };
 
 int main()
 {
-	// ¹è¿­ º¯¼ö ¼±¾ğ.
+	// ë°°ì—´ ë³€ìˆ˜ ì„ ì–¸.
 	Array<int, 5> array;
 	array[3] = 20;
 
-	// const Á¢±Ù.
+	// const ì ‘ê·¼.
 	const auto& arrayReference = array;
 
 	std::cin.get();

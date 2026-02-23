@@ -1,8 +1,8 @@
-#include "Container/Queue.h"
+ï»¿#include "Container/Queue.h"
 
 int main()
 {
-	//Å¥ °´Ã¼ »ı¼º
+	//í ê°ì²´ ìƒì„±
 	Queue<int> queue;
 	const int count = 10;
 	for (int ix = 0; ix < count; ++ix)
@@ -19,7 +19,7 @@ int main()
 
 	queue.Print();
 
-	//°ª Ãß°¡
+	//ê°’ ì¶”ê°€
 
 	queue.Enqueue(11);
 	queue.Enqueue(12);

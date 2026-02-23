@@ -1,4 +1,4 @@
-#include "LinkedList/LinkedList.h"
+ï»¿#include "LinkedList/LinkedList.h"
 #include <iostream>
 //#include <list>
 #include <forward_list>
@@ -20,22 +20,22 @@ int main()
 	//{
 	//}
 
-	// ¿¬°á ¸®½ºÆ® »ı¼º.
+	// ì—°ê²° ë¦¬ìŠ¤íŠ¸ ìƒì„±.
 	LinkedList<int> list;
 	list.Insert(20);
 	list.Insert(30);
 	list.Insert(10);
 
-	// Ãâ·Â.
-	std::cout << "³ëµå Ãß°¡ ÈÄ Ãâ·Â\n";
+	// ì¶œë ¥.
+	std::cout << "ë…¸ë“œ ì¶”ê°€ í›„ ì¶œë ¥\n";
 	list.Print();
 
-	// »èÁ¦.
+	// ì‚­ì œ.
 	//list.Delete(30);
 	//list.Delete(10);
 
-	// Ãâ·Â.
-	std::cout << "³ëµå »èÁ¦ ÈÄ Ãâ·Â\n";
+	// ì¶œë ¥.
+	std::cout << "ë…¸ë“œ ì‚­ì œ í›„ ì¶œë ¥\n";
 	list.Print();
 
 	std::cin.get();
