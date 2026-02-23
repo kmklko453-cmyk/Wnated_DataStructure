@@ -13,11 +13,11 @@ class Node
 
 
 public:
-	Node(const T& data, const Node<T>* const parent = nullptr)
-		:data(data, parent(parent)
+	Node(const T& data,
+		 Node<T>* const parent = nullptr)
+		: data(data), parent(parent)
 	{
 	}
-
 
 private:
 	//데이터 변수
